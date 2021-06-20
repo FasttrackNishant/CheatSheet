@@ -1,2 +1,2 @@
 # CheatSheet
-thiis is my collection of learning resources
+this is my collection of learning resources
