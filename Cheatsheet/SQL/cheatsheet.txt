@@ -1,0 +1,390 @@
+HI Welcome to Mysql CheatSheet
+~~SQL Notes
+
+
+~~~Use Database Demo 
+
+-->SQL stands for Structured Query Language
+-->RDBMS stands for Relational Database Management System.
+--> 
+~~Basic Commands
+
+--> to view all databases
+show databases;
+
+--> to view all tables;
+show tables;
+
+--> to select one database;
+use database_name;
+
+--> to create database
+create database database_name;
+
+-->  to create tables
+create table ( value datatype , value2 datatype)
+
+-->create table using not null
+CREATE TABLE Persons 
+    ID int NOT NULL;
+
+
+--> not null after creating table
+
+alter table Persons
+modify Age int NOT NULL;
+
+
+--> to view columns in table
+desc table_name;
+
+--> to view all the data table
+select *from table_name;
+
+--> to change table
+alter table table_name;
+
+--> change order of column in table
+alter table table_name
+modify tochage_colname datatype after underwhom;
+
+-->create copy of table
+
+create table <new table> as 
+select <col1> , <col2> 
+from <existing tbl name>;
+
+
+
+~~~ Delete 
+
+--->Delete Table 
+drop table <table name >
+
+
+-->Delete column
+
+ALTER TABLE table_name
+DROP COLUMN column_name;
+
+--> Delete data in table not the whole table
+
+called as SQL TRUNCATE TABLE
+
+TRUNCATE TABLE table_name;
+
+or
+
+delete from copytbl
+
+
+
+~~Insert Data
+
+--> Insert Data into table
+
+
+
+~~ Update Data
+
+--> Update Table name
+
+ALTER TABLE table_name
+  RENAME TO new_table_name;
+
+--> change column name 
+
+RENAME COLUMN old_column_name1  TO    new_col_name1;
+
+ALTER TABLE table_name CHANGE old_name  new_name   DataType;
+
+
+--> Add column into existing table 
+
+  ALTER TABLE table_name
+  add col_name datatype;
+
+--> change datatype of column 
+
+ALTER TABLE zero
+MODIFY COLUMN Result varchar(20); 
+
+
+
+--> Rename Multiple MySQL Columns
+
+ALTER TABLE table_name
+RENAME COLUMN old_column_name1 TO new_col_name1,
+RENAME COLUMN old_column_name2 TO new_col_name2,
+RENAME COLUMN old_column_name3 TO new_col_name3;
+
+
+-->Insert Data into existing table
+
+update zero 
+set DOB = '2015-06-12'
+where Num = 2;
+
+
+Be careful when updating records. If you omit the WHERE clause, ALL records will be updated!
+
+~~ Select 
+
+-->The SELECT statement is used to select data from a database.
+The data returned is stored in a result table, called the result-set.
+
+-->SELECT Column
+
+-> Get data from custom tables
+
+SELECT col1 , col2
+ FROM tbl_name;
+
+->to select all columns in a table
+
+select * form table_name ;
+
+
+-> If duplicate value are present in the table and if we want to get only different values then distinct commnad is used 
+
+select distinct column1, column2, ...
+FROM table_name;
+
+
+~~~  Where Clause
+
+select column1, column2, ...
+from table_name
+Where condition;
+
+condition may be --> > < <> Between LIKE IN 
+
+~~~
+And or not
+
+The AND operator displays a record if all the conditions separated by AND are TRUE.
+
+
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition1 AND condition2 AND condition3 ...;
+
+
+
+The OR operator displays a record if any of the conditions separated by OR is TRUE.
+
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition1 OR condition2 OR condition3 ...;
+
+
+--> Not 
+
+SELECT column1, column2, ...
+FROM table_name
+WHERE NOT condition;
+
+
+~~~
+Order by
+
+SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1, column2  ASC  DESC;
+
+By default value is by ascending 
+
+-->
+
+select * from zero
+order by Fname , DOB 
+
+first order is done by first name given then second 
+
+~~~
+Limit
+
+used to limit the data in the table 
+select * from one 
+where Result = "Passed"
+limit 2;
+
+~~~
+Max and Min 
+
+-> it will give lowest value and named as loser
+
+select min(marks) as loser
+from one ;
+
+-> 
+minimum value is shown form the table
+
+SELECT MIN(column_name)
+FROM table_name
+WHERE condition;
+
+~~~
+Count
+
+-> Using condition
+
+select Count(colonumn_name)
+FROM table_name
+WHERE condition;
+
+->without condition
+
+select count(Lname)
+from one ;
+
+~~~
+
+Average
+
+SELECT AVG(marks)
+FROM one;
+
+~~~
+
+Sum
+
+SELECT sum(marks)
+FROM one;
+
+~~~
+
+LIKE
+
+select * from one
+where Fname like pattern;
+
+'%a'    --> ends with a 
+'a%'    --> starts with a 
+'%TEXT% --> text at any position
+'_r%'	  --> Finds any values that have "r" in the second position
+ 'a_%'  -->	Finds any values that start with "a" and are at least 2 characters in length
+'a__%' -->Finds any values that start with "a" and are at least 3 characters in length
+'a%o'	 -->Finds any values that start with "a" and ends with "o"
+
+~~~
+Join
+
+-> Inner Join
+
+
+-> Left Join
+
+
+-> Right Join
+
+
+-> Full outer Join
+
+
+
+~~~
+Union 
+
+~~~
+
+Alias
+
+-> for column
+
+SELECT column_name AS alias_name
+FROM table_name;
+
+->for table
+
+SELECT table_name AS alias_name
+FROM table_name;
+
+
+~~~
+Database
+
+~~~
+
+-->Constraint
+
+NOT NULL
+
+CREATE TABLE tbl_name (
+    ID int NOT NULL,
+    );
+
+-> Not null after created table
+
+ALTER TABLE Persons
+MODIFY Age int NOT NULL;
+
+~~~
+Unique
+
+
+It makes data Unique in the table
+
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    UNIQUE (ID)
+);
+
+-> On existing table
+
+ALTER TABLE Persons
+ADD UNIQUE (ID);
+
+-> On existing table in Multiple column
+
+ALTER TABLE Persons
+ADD CONSTRAINT UC_Person UNIQUE (ID,LastName);
+
+~~~
+To check which is primary key
+
+SHOW KEYS FROM table WHERE Key_name = 'PRIMARY'
+
+~~~
+Primary key
+
+-> Add to new table
+
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    PRIMARY KEY (ID)
+);
+
+
+-> Add to many table at a time
+
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    CONSTRAINT PK_Person PRIMARY KEY (ID,LastName)
+);
+Note: In the example above there is only ONE PRIMARY KEY (PK_Person). However, the VALUE of the primary key is made up of TWO COLUMNS (ID + LastName).
+
+->primary key on existing table
+
+ ALTER TABLE Persons
+ADD PRIMARY KEY (ID);
+
+->primary key on existing table in pair
+
+ALTER TABLE Persons
+ADD CONSTRAINT PK_Person PRIMARY KEY (ID,LastName);
+
+-> Delete Primary key
+
+ALTER TABLE Persons
+DROP PRIMARY KEY;
+
+
+~~~
+Foreign key 
+
+there are two tables one is child and other is parent
+
+parent --> we make one primary key there
+child --> we make one Foreign key there that refers to the pk in parent
+

@@ -1,0 +1,3 @@
+first the file is untracked it means git has no realtion with your file then the file is to go at the staging area for that we use commnad and it goes to staging area this is the area where your file is ready to be saved and then the we commit and it gets saves and git starts tracking it
+
+now this file is at the unmodified stage then as we do some chagnes  the file becomes modified and then we have to again stage the file

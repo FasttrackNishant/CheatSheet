@@ -1,0 +1,115 @@
+-> To check path
+pwd
+
+-> To set name and email
+
+git config --global user.name  Nishant....
+git config --global user.email ncp14...
+
+to view 
+git config --global user.email
+
+-> to initialize git repo
+
+git init
+
+-> to view hidden fils
+
+ls -lart
+
+->git status shows status
+
+git status
+
+-> send in staging area
+
+git add index.html
+
+-> to commit 
+
+git commit
+vim editor opens add inital commit line at row 1.
+
+-> to add many files at a one time in staging area
+git add -A 
+
+
+-> to commit using -many
+git commit -m " commit_msg "  
+
+->git checkout
+it matches or chagnes your data with the last commit
+
+->git checkout -f
+it will match your all files at a time with previous commit
+
+-> git log
+to view past commits
+
+->to custmize no of commits to view
+git log -p -1,-3
+
+-> git diff
+it compares working tree with the staging area and give out the difference
+
+-> git diff --staged
+to comapare staging area with the last commit
+
+-> to directly commit without going to stage area
+but this should be avoided     
+git commit -a -m "skipped staging area "
+
+-> if certain unwanted file is added in commit then
+ git rm --cached waste.html  
+
+->git rm waste.html
+ if want to adelete that file
+
+-> git status -s 
+it shows overall status in pattrn 
+red M for modified
+yellow M for staged
+
+-> git ignore
+u cant create git ignore using windows
+touch .gitignore -->to create file
+
+-> add name of file in the gitignore
+file which is to be untracked should be added in the git ignore
+it will ignore all the files even it is in the folder
+&
+if want to ignore all files for that extension then write *log i.e. *extension
+&
+if want to ignore only the file in that folder write /mylog.log
+&
+if want to ignore whole directory then the file is added in git ignore 
+
+
+
+~~~Branches
+
+-> git branch 
+to view all the Branches
+
+-> git branch feature1
+to create new branch feature1
+
+->git checkout feature1
+to go in the feature1 branch
+
+-> them make commit and merge into the master like
+git merge branchname    
+
+-> git checkout -b flask
+to go and create branch 
+
+
+
+~~~to github
+
+->git remote add origin  ...https url
+to connect with url
+
+->git remote
+to view in which current remote we are 
+
